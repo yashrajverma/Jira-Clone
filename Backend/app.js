@@ -4,10 +4,10 @@ const mongoose = require("mongoose");
 const authRouter = require("./routes/Auth");
 const taskRouter = require("./routes/Tasks");
 const PORT_ = process.env.PORT || 5000;
-
+const cors = require("cors");
 const MONGO_URI = `mongodb+srv://yashraj:DevAndJava@cluster0.pegch.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 app.use(express.json({ limit: "100mb" }));
-
+app.use(cors());
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

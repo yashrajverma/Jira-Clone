@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const JWT_Secret = "Signing";
 module.exports.signUp = async (req, res, next) => {
   const { email, password, name } = req.body;
-  console.log(req.body);
   try {
     if (email == "" || password == "" || name == "") {
       res.json({ message: "Please Enter All Fields!!" });
@@ -37,7 +36,7 @@ module.exports.signIn = async (req, res, next) => {
       const isMatched = await bcrypt.compare(password, user.password);
       if (user.isVerified && isMatched) {
         const token = jwt.sign({ _id: user._id }, JWT_Secret);
-        return res.json({ token });
+        return res.json({ token, message: "You Are Logged In!!" });
       } else {
         return res.status(401).json({ error: "Password Doesn't Matched!!" });
       }

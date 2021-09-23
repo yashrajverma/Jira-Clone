@@ -1,0 +1,218 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --black: #3c3c3c;
+  --white: #fff;
+  --black_low: #8b8b8b;
+  --green_var: #329c89;
+  --red: #ff0000;
+}
+.main_card {
+  width: 570px;
+  height: 600px;
+  background: var(--white);
+  border: 2px solid rgba(26, 59, 88, 0.24);
+  box-shadow: 0px 0px 42px -4px rgba(30, 30, 60, 0.2);
+  border-radius: 70px;
+}
+.switch {
+  display: flex;
+  font-size: 2em;
+
+  margin: 10% 0% 2% 10%;
+}
+.login_switch {
+  margin: 1% 2.5%;
+  cursor: pointer;
+  color: var(--black_low);
+}
+.signup_switch {
+  margin: 1% 2.5%;
+  cursor: pointer;
+  color: var(--black_low);
+}
+.border_bottom {
+  width: 30px;
+  color: var(--black_low);
+  height: 2px;
+  border-radius: 12px;
+}
+.to_continue_div {
+  margin: 0 0% 0 12%;
+}
+.to_continue {
+  color: var(--black);
+}
+.to_continue_p {
+  color: var(--black_low);
+}
+.active {
+  color: var(--black);
+  margin: 1% 2.5%;
+  cursor: pointer;
+}
+.login {
+  width: 80%;
+  display: inline;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0% auto;
+  border-bottom: 1px solid var(--black_low);
+}
+.login_email {
+  width: 55%;
+  border: 2px solid var(--black_low);
+  margin: 2% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.login_email_error {
+  width: 55%;
+  border: 2px solid var(--red);
+  margin: 2% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.login_password {
+  width: 55%;
+  border: 2px solid var(--black_low);
+  margin: 2% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.login_password_error {
+  width: 55%;
+  border: 2px solid var(--red);
+  margin: 2% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.login_email:focus {
+  outline: none;
+}
+.login_password:focus {
+  outline: none;
+}
+.login_email_error:focus {
+  outline: none;
+}
+.login_password_error:focus {
+  outline: none;
+}
+.login_btn {
+  width: 55%;
+  margin: 2% auto;
+  border: none;
+  outline: none;
+  background-color: var(--green_var);
+  border-radius: 8px;
+  padding: 1.7% 8%;
+  color: var(--white);
+}
+.signup {
+  width: 80%;
+  display: inline;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--black_low);
+}
+.signup_email {
+  width: 55%;
+  border: 2px solid var(--black_low);
+  margin: 1% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.signup_name {
+  width: 55%;
+  border: 2px solid var(--black_low);
+  margin: 1% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.signup_password {
+  width: 55%;
+  border: 2px solid var(--black_low);
+  margin: 2% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.signup_email_error {
+  width: 55%;
+  border: 2px solid var(--red);
+  margin: 1% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.signup_name_error {
+  width: 55%;
+  border: 2px solid var(--red);
+  margin: 1% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.signup_password_error {
+  width: 55%;
+  border: 2px solid var(--red);
+  margin: 2% auto;
+  padding: 2% 0%;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.signup_name:focus {
+  outline: none;
+}
+.signup_email:focus {
+  outline: none;
+}
+.signup_password:focus {
+  outline: none;
+}
+.signup_name_error:focus {
+  outline: none;
+}
+.signup_email_error:focus {
+  outline: none;
+}
+.signup_password_error:focus {
+  outline: none;
+}
+.signup_btn {
+  width: 55%;
+  margin: 0 auto;
+  border: none;
+  outline: none;
+  background-color: var(--green_var);
+  border-radius: 8px;
+  padding: 1.7% 8%;
+  color: var(--white);
+}
+@media screen and (max-width: 766px) {
+  .main_card {
+    width: 350px;
+    height: 500px;
+    background: var(--white);
+    border: 2px solid rgba(26, 59, 88, 0.24);
+    box-shadow: 0px 0px 42px -4px rgba(30, 30, 60, 0.2);
+    border-radius: 65px;
+    margin: 0 auto;
+  }
+}
