@@ -1,7 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import _ from "lodash";
+import { AuthContext } from '../reducer/Reducer'
+import { useHistory } from 'react-router-dom'
+
 const Todo = () => {
+  const history = useHistory()
+  const { token, email } = useContext(AuthContext);
+  useEffect(() => {
+    const localToken = localStorage.getItem("token");
+    if (token === "" && localToken === "") {
+      history.push("/signin");
+    }
+  }, [])
   const [state, setState] = useState({
     todo: {
       title: "Todo",
@@ -16,6 +27,8 @@ const Todo = () => {
       items: [],
     },
   });
+
+
   return (
     <div>
       <DragDropContext
