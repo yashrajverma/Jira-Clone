@@ -6,7 +6,7 @@ const taskRouter = require("./routes/Tasks");
 const PORT_ = process.env.PORT || 5001;
 const cors = require("cors");
 const MONGO_URI = `mongodb+srv://yashraj:DevAndJava@cluster0.pegch.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-app.use(express.json({ limit: "100mb" }));
+app.use(express.json({ limit: "105mb" }));
 app.use(cors());
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
