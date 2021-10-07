@@ -1,4 +1,6 @@
 const Tasks = require("../models/Tasks");
+const InProgressSchema = require("../models/InProgress");
+const CompletedSchema = require("../models/Completed");
 
 module.exports.AddTasks = async (req, res, next) => {
   const { title, description } = req.body;
@@ -8,7 +10,7 @@ module.exports.AddTasks = async (req, res, next) => {
       description,
     });
     AddTask = await AddTask.save();
-    res.json({ message: "Tasks is Successfully Added!!" });
+    res.json({ message: "Tasks is Successfully Added!!", AddTask: [AddTask] });
   } catch {
     (err) => {
       return res.status(400).json({ error: err });
@@ -39,7 +41,7 @@ module.exports.GetTasks = async (req, res, next) => {
     if (tasks) {
       return res.json({ message: tasks });
     } else {
-      return res.json({ error: "Error Occured!!" });
+      return res.status(401).json({ error: "Error Occured!!" });
     }
   } catch {
     (err) => {
@@ -70,6 +72,22 @@ module.exports.upDateTasks = async (req, res, next) => {
     (err) => {
       console.log("error", err);
       return res.status(400).json({ error: err });
+    };
+  }
+};
+module.exports.InProgress = async (req, res, next) => {
+  const { _id } = req.body;
+  try {
+    let in_ProgressSave = await InProgressSchema.findById({ _id });
+    if (in_ProgressSave) {
+      in_ProgressSave = [...in_ProgressSave, in_ProgressSave];
+      in_ProgressSave = await in_ProgressSave.save();
+      res.json({ message: "Added in Progress" });
+    }
+    console.log(in_progress);
+  } catch {
+    (err) => {
+      return res.status(401).json({ error: err });
     };
   }
 };

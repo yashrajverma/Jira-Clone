@@ -1,22 +1,22 @@
-import React, { useState, useEffect, createContext } from "react";
-export const AuthContext = createContext();
-
-function AuthContextProvider(props) {
-  const [token, setToken] = useState("");
-  const [email, setEmail] = useState("");
-  function update_token(tkn) {
-    setToken(tkn);
+export const initialState = null;
+export const reducer = (state, action) => {
+  if (action.type == "USER") {
+    return action.payload;
   }
-
-  function update_email(mail) {
-    setEmail(mail);
+  if (action.type == "CLEAR") {
+    return null;
   }
-
-  return (
-    <AuthContext.Provider value={{ update_email, email, update_token, token }}>
-      {props.children}
-    </AuthContext.Provider>
-  );
-}
-
-export default AuthContextProvider;
+  if (action.type == "UPDATE") {
+    return {
+      ...state,
+      state: action.payload,
+    };
+  }
+  if (action.type == "UPDATEPIC") {
+    return {
+      ...state,
+      pic: action.payload,
+    };
+  }
+  return state;
+};

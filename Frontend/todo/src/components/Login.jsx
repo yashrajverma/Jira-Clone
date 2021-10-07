@@ -1,12 +1,22 @@
 import React, { useEffect, useState, useContext } from 'react'
 import illustration from '../Assets/img/Group.png'
-import { AuthContext } from '../reducer/Reducer';
+import { UserContext } from '../App';
 import styles from '../Assets/css/loginRight.module.css'
 import { BASE_URL } from '../env';
 import { useHistory } from 'react-router-dom'
 const Login = () => {
-    const { update_email, email, token, update_token } = useContext(AuthContext)
+    const { state, dispatch } = useContext(UserContext)
+    const history = useHistory();
+    useEffect(() => {
+        const localtoken = localStorage.getItem("user");
 
+        if (state !== null && localtoken !== "") {
+            history.push("/")
+            // console.log("Token from login", state)
+        } else {
+            history.push("/signin")
+        }
+    }, [])
     const LoginRight = () => {
 
         const [activeLogin, setActiveLogin] = useState(true);
@@ -29,7 +39,7 @@ const Login = () => {
         const [LoginSuccessMsg, setLoginSuccessMsg] = useState("")
         const [SignUpSuccess, setSignUpSuccess] = useState(false)
         const [SignUpSuccessMsg, setSignUpSuccessMsg] = useState("")
-        const history = useHistory();
+
 
 
 
@@ -55,9 +65,8 @@ const Login = () => {
                         if (response.message) {
                             setLoginSuccess(true)
                             setLoginSuccessMsg(response.message)
-                            localStorage.setItem("token", response.token);
-                            update_token(response.token)
-                            update_email(LoginEmail)
+                            localStorage.setItem("user", response.token);
+                            dispatch({ type: "USER", payload: response.token })
                             history.push("/")
                         }
                     })

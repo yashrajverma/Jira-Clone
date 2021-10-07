@@ -2,4 +2,76 @@
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+.row-back {
+  background-color: #f5f9f9;
+  height: 100%;
+  padding: 1% 1%;
+  border-radius: 20px;
+  margin: 0 10px !important;
+  width: 30%;
+}
+
+.count {
+  color: #329c89;
+  background-color: #f5f9f9;
+  padding: 2px;
+}
+.items {
+  padding: 10px;
+  background-color: white;
+  padding: 5px 10px;
+  color: black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.display_flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  cursor: pointer;
+}
+.addButton {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  transform: translate(-10, -10);
+  padding: 20px 25px;
+  background-color: #f5f9f9;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 15px 29px -4px rgba(50, 156, 137, 0.25);
+  border: none;
+}
+.addButton:focus {
+  outline: none;
+}
+.saveButton {
+  background-color: #f5f9f9;
+  color: #329c89;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 18px 0px rgba(50, 156, 137, 0.25);
+  margin-right: 15px;
+}
+.input_modal {
+  border: 1px solid #329c89;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 10px 8px;
+}
+.input_modal:focus {
+  border: 1px solid #329c89;
+  margin: 10px 0;
+  border-radius: 10px;
+  outline: none;
+}
+#exampleModal {
+  border-radius: 30px;
 }
