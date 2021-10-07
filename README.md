@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/48011552/136326163-b86be13f-e80e-4598-8dea-81f6f72a9d64.png)
+
+
 # Jira-Clone
 
 In this project you all will be building the Jira Clone App.
