@@ -77,7 +77,7 @@ const Todo = () => {
   const LeftSide = () => {
     return (
       <>
-        <h3 className="text-center mb-5">.taskez</h3>
+        <h3 className="text-center mb-5">Todonizer</h3>
         <div className="d-flex flex-column align-items-center justify-content-between">
 
           <h5>
