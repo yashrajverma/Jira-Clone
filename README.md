@@ -15,3 +15,7 @@ To contribute to this repo
 # Link
 
 [https://moderntodo.herokuapp.com/](https://moderntodo.herokuapp.com/)
+
+
+`` 
+I will not merge the PR who doesnt have ``` hacktoberfest ``` label.
