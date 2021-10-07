@@ -16,7 +16,13 @@ To contribute to this repo
 
 [https://moderntodo.herokuapp.com/](https://moderntodo.herokuapp.com/)
 
+#Note
 
-`` 
-I will not merge the PR who doesnt have ``` hacktoberfest ``` label.
+After Registering for the `Hacktoberfest2021`, then only your PR's will get counted.
+Make sure to Register Yourself first on
+[Hacktoberfest2021](https://hacktoberfest.digitalocean.com/)
+
+``I will not merge the PR who doesnt have`hacktoberfest`
+label.
+
 ``
