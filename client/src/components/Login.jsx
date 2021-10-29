@@ -17,6 +17,7 @@ const Login = () => {
             history.push("/signin")
         }
     }, [])
+    // start
     const LoginRight = () => {
 
         const [activeLogin, setActiveLogin] = useState(true);
@@ -150,7 +151,6 @@ const Login = () => {
         )
     }
 
-
     return (
         <>
             <div className="container-fluid">
@@ -172,3 +172,4 @@ const Login = () => {
 }
 
 export default Login
+// end of code done 
