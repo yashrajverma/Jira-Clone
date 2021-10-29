@@ -12,6 +12,7 @@ import calender from '../Assets/img/bi_calendar-date.svg'
 import logout from '../Assets/img/Group-1.svg'
 import addButton from '../Assets/img/Vector.png'
 import { BASE_URL } from '../env'
+
 // import { data } from './data'
 
 const Todo = () => {
@@ -25,6 +26,8 @@ const Todo = () => {
   const [user, setUser] = useState({})
   const [in_progessArray, setInProgressArray] = useState([])
   const [completedArray, setCompletedArray] = useState([])
+  const [successMessageBool, setSuccessMessageBool] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
   useEffect(() => {
 
     if (state === null) {
@@ -43,7 +46,7 @@ const Todo = () => {
     })
       .then(res => res.json()).then((data) => {
         setUser(data.message)
-        // console.log(user._id);
+        console.log(user._id);
 
       }).catch((err) => {
         console.log(err);
@@ -80,6 +83,7 @@ const Todo = () => {
       console.log("InProgress Data", data);
     })
   }
+
   console.log("Task Array", todoArray);
   //bring the todos in the TODO List.
   const structure = {
@@ -195,6 +199,8 @@ const Todo = () => {
     }).then(res => res.json()).then((data) => {
       console.log(data);
       setTaskMessage(data.message);
+      setSuccessMessageBool(!successMessageBool);
+      setSuccessMessage(data.message);
     }).catch(err => {
       console.log(err);
     })
@@ -230,6 +236,7 @@ const Todo = () => {
                   <h5 type="button" class="saveButton" onClick={() => { SaveDataToDB() }}>Save </h5>
                   <h5 type="button" style={{ color: "#329c89" }} data-dismiss="modal">Close</h5>
                 </div>
+                {successMessageBool ? <div className="bg-success text-white p-3">{successMessage}</div> : null}
               </div>
             </div>
           </div>
