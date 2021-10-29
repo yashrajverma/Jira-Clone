@@ -94,7 +94,7 @@ module.exports.InProgress = async (req, res, next) => {
     let user = await User.findOne({ _id: user_id });
     if (user) {
       user.in_progress = [...user.in_progress, _id];
-      user.tasks.pull(_id);
+      // user.tasks.pull(_id);
       // user.tasks.forEach((item) => {
       //   if (item._id == _id && !item.includes(tasks._id)) {
       //     item.push(tasks._id);
