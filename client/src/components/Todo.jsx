@@ -12,8 +12,7 @@ import calender from '../Assets/img/bi_calendar-date.svg'
 import logout from '../Assets/img/Group-1.svg'
 import addButton from '../Assets/img/Vector.png'
 import { BASE_URL } from '../env'
-import { data } from './data'
-
+// import { data } from './data'
 
 const Todo = () => {
   const history = useHistory()
@@ -23,9 +22,33 @@ const Todo = () => {
   const [description, setDescription] = useState("")
   const [TaskMessage, setTaskMessage] = useState("")
   const [todoArray, setTaskArray] = useState([])
+  const [user, setUser] = useState({})
   const [in_progessArray, setInProgressArray] = useState([])
   const [completedArray, setCompletedArray] = useState([])
+  useEffect(() => {
 
+    if (state === null) {
+      history.push("/signin");
+    } else {
+
+      history.push("/");
+    }
+  }, [])
+  useEffect(() => {
+    fetch(BASE_URL + "/getProfile", {
+      headers: {
+        "content-type": "application/json",
+        authorization: state
+      }
+    })
+      .then(res => res.json()).then((data) => {
+        setUser(data.message)
+        // console.log(user._id);
+
+      }).catch((err) => {
+        console.log(err);
+      })
+  }, []);
   useEffect(() => {
     fetch(BASE_URL + "/getTasks", {
       headers: {
@@ -34,18 +57,34 @@ const Todo = () => {
       }
     })
       .then(res => res.json()).then((data) => {
-        setTaskArray(data.message)
+        setTaskArray(data?.message)
         // console.log(data.message);
 
       }).catch((err) => {
         console.log(err);
       })
-  }, [])
+  }, [user]);
+  const deleteTask = async (_id) => {
+    await fetch(BASE_URL + "/deleteTasks/" + _id, {
+      method: "delete",
+      headers: { "Content-Type": "application/json", authorization: state }
+    }).then(res => res.json()).then(data => {
+      console.log("Delete Data", data);
+    })
+  }
+  const InProgress = async (_id) => {
+    await fetch(BASE_URL + "/in-progress/" + _id, {
+      method: "post",
+      headers: { "Content-Type": "application/json", authorization: state }
+    }).then(res => res.json()).then(data => {
+      console.log("InProgress Data", data);
+    })
+  }
   console.log("Task Array", todoArray);
   const structure = {
     "todo": {
       title: "Todo",
-      items: data,
+      items: todoArray,
     },
     "in-progress": {
       title: "In Progress",
@@ -58,16 +97,8 @@ const Todo = () => {
   }
   const [stateArray, setState] = useState(structure);
 
+  console.log(structure);
 
-  useEffect(() => {
-
-    if (state === null) {
-      history.push("/signin");
-    } else {
-
-      history.push("/");
-    }
-  }, [])
   const logoutUser = () => {
     dispatch({ type: "CLEAR" })
     history.push('/signin');
@@ -131,19 +162,22 @@ const Todo = () => {
   }
 
   const handleDragEnd = ({ destination, source }) => {
-    if (!destination) {
-      return
-    }
-    if (destination.droppableId === source.droppableId && destination.index === source.index) {
-      return
-    }
-    const itemCopy = { ...stateArray[source.droppableId].items[source.index] }
-    setState(prev => {
-      prev = { ...prev }
-      prev[source.droppableId].items.splice(source.index, 1);
-      prev[destination.droppableId].items.splice(destination.index, 0, itemCopy);
-      return prev
-    })
+    // if (!destination) {
+    //   return
+    // }
+    // if (destination.droppableId === source.droppableId && destination.index === source.index) {
+    //   return
+    // }
+    // if (destination.droppableId == "in-progress") {
+    //   InProgress("6162ecb1af086d61cf30df03");
+    // }
+    // const itemCopy = { ...stateArray[source.droppableId].items[source.index] }
+    // setState(prev => {
+    //   prev = { ...prev }
+    //   prev[source.droppableId].items.splice(source.index, 1);
+    //   prev[destination.droppableId].items.splice(destination.index, 0, itemCopy);
+    //   return prev
+    // })
   }
 
 
@@ -154,7 +188,8 @@ const Todo = () => {
       headers: { "Content-Type": "application/json", authorization: state },
       body: JSON.stringify({
         title,
-        description
+        description, user_id: user._id
+
       })
     }).then(res => res.json()).then((data) => {
       console.log(data);
@@ -226,10 +261,11 @@ const Todo = () => {
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                       >
-                                        <h5>
-                                          {el.title}
+                                        <h5 style={{ textDecoration: "ellipses" }}>
+                                          {el.title}<ion-icon name="trash" style={{ cursor: "pointer" }} onClick={() => { deleteTask(el._id) }}></ion-icon>
                                         </h5>
                                         {el.description}
+
                                       </div>)
                                     }}
                                   </Draggable>
