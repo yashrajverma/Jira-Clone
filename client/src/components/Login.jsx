@@ -48,6 +48,8 @@ const Login = () => {
             return re.test(email);
         }
         async function onLogin() {
+            //  6 digit missing 
+            //TODO ADD
             if (validateEmail(LoginEmail)) {
                 if (LoginPassword != "") {
                     setLoginEmailError(false)
