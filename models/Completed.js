@@ -6,5 +6,6 @@ const CompletedSchema = new mongoose.Schema({
       ref: "Tasks",
     },
   ],
+  user_id: { type: mongoose.Types.ObjectId, ref: "User" },
 });
 module.exports = mongoose.model("Completed", CompletedSchema);
