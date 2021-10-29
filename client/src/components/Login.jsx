@@ -79,7 +79,9 @@ const Login = () => {
         }
         async function onSignUp() {
             if (validateEmail(SignUpEmail)) {
-                if (SignUpPassword !== "" || SignUpName !== "") {
+                //  || => &&  changed to and 
+                // dev-negative
+                if (SignUpPassword !== "" && SignUpName !== "") {
                     setSignUpEmailError(false)
                     setSignUpPasswordError(false)
                     setSignUpNameError(false)
