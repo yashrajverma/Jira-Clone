@@ -6,6 +6,7 @@ import { reducer, initialState } from "./reducer/Reducer";
 import { useContext, createContext, useReducer, useEffect } from "react";
 
 export const UserContext = createContext();
+// routing function start
 function Routing() {
   const { state, dispatch } = useContext(UserContext);
   const history = useHistory();
@@ -28,6 +29,8 @@ function Routing() {
     </>
   );
 }
+// end 
+// Main App run
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
